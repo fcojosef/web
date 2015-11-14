@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Usuario;
+
 
 @WebServlet("/ParamServlet")
 public class ParamServlet extends HttpServlet {
@@ -21,14 +23,12 @@ public class ParamServlet extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
 		int idade = Integer.parseInt(request.getParameter("idade"));
+		UsuarioDao uDao = new UsuarioDao();
+		Usuario u = new Usuario(nome, email, idade);
+		uDAO.registra(u);
 		
-		PrintWriter out = response.getWriter();
-		out.println("<html><body><ul>");
-		out.println("<li>Param 1:" + request.getParameter("nome"));
-		out.println("<li>Param 2:" + request.getParameter("senha"));
-		out.println("</ul></body></html>");
-		out.close();
 		response.sendRedirect("sucesso.html");
+		
 		}catch (Exception ex){
 				response.sendRedirect("cadastrofalhou.html");
 		 	}
