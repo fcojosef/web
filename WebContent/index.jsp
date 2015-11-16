@@ -13,6 +13,7 @@
 		</div>
 		<div id="footer">
 			<% out.print ("This is my Footer!!!"+"<br/>" + new Date()); %>
+			1+1 = {1+1}
 		</div>
 	</body>
 </html>
